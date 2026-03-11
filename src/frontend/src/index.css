@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font: Fraunces (display) */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font: Sora (body/UI) */
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Dragon Play — Dark Fantasy Night */
+    --background: 15 0.04 260;
+    --foreground: 92 0.02 270;
+
+    --card: 18 0.05 265;
+    --card-foreground: 92 0.02 270;
+
+    --popover: 18 0.05 265;
+    --popover-foreground: 92 0.02 270;
+
+    /* Emerald green primary */
+    --primary: 65 0.18 155;
+    --primary-foreground: 10 0.03 260;
+
+    /* Gold accent */
+    --secondary: 75 0.15 85;
+    --secondary-foreground: 10 0.03 260;
+
+    --muted: 22 0.04 265;
+    --muted-foreground: 60 0.04 270;
+
+    /* Gold accent */
+    --accent: 75 0.15 85;
+    --accent-foreground: 10 0.03 260;
+
+    /* Fire red */
+    --destructive: 55 0.22 30;
+    --destructive-foreground: 95 0.01 0;
+
+    --border: 25 0.06 265;
+    --input: 22 0.04 265;
+    --ring: 65 0.18 155;
+
+    --radius: 0.5rem;
+
+    --chart-1: 65 0.18 155;
+    --chart-2: 75 0.15 85;
+    --chart-3: 55 0.22 30;
+    --chart-4: 50 0.2 260;
+    --chart-5: 70 0.12 310;
+
+    --sidebar: 18 0.05 265;
+    --sidebar-foreground: 92 0.02 270;
+    --sidebar-primary: 65 0.18 155;
+    --sidebar-primary-foreground: 10 0.03 260;
+    --sidebar-accent: 75 0.15 85;
+    --sidebar-accent-foreground: 10 0.03 260;
+    --sidebar-border: 25 0.06 265;
+    --sidebar-ring: 65 0.18 155;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sora;
+    overflow: hidden;
+  }
+}
+
+/* Glow effects */
+.glow-emerald {
+  box-shadow: 0 0 20px oklch(65% 0.18 155 / 0.4), 0 0 40px
+    oklch(65% 0.18 155 / 0.15);
+}
+.glow-gold {
+  box-shadow: 0 0 20px oklch(75% 0.15 85 / 0.4), 0 0 40px
+    oklch(75% 0.15 85 / 0.15);
+}
+.glow-fire {
+  box-shadow: 0 0 20px oklch(55% 0.22 30 / 0.5), 0 0 40px
+    oklch(55% 0.22 30 / 0.2);
+}
+
+.btn-fantasy {
+  @apply relative overflow-hidden font-sora font-semibold tracking-wide uppercase text-sm transition-all duration-200;
+}
+.btn-fantasy::before {
+  content: "";
+  @apply absolute inset-0 opacity-0 transition-opacity duration-200;
+  background: linear-gradient(
+    135deg,
+    oklch(100% 0 0 / 0.06),
+    oklch(100% 0 0 / 0)
+  );
+}
+.btn-fantasy:hover::before {
+  @apply opacity-100;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
